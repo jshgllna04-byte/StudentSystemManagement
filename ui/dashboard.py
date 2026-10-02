@@ -1,3 +1,4 @@
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -15,9 +16,14 @@ class DashboardPage(QWidget):
         self.main_window = main_window
 
         layout = QVBoxLayout()
-
+        layout.setContentsMargins(100,50,100,50)
+        layout.setSpacing(10)
         title = QLabel("Student Management System")
+        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        title.setStyleSheet("""font-family: Times New Roman;font-size: 35px;font-weight: bold;""")
         layout.addWidget(title)
+
+        layout.addSpacing(200)
 
         add_button = QPushButton("Add Student")
         add_button.clicked.connect(

@@ -27,7 +27,7 @@ class StudentDetailPage(QWidget):
 
         self.back_button = QPushButton("Back")
         self.back_button.clicked.connect(
-            self.go_back
+            self.goback
         )
 
         layout.addWidget(self.back_button)
@@ -73,3 +73,6 @@ class StudentDetailPage(QWidget):
     def go_back(self):
 
         self.main_window.show_dashboard()
+
+    def goback(self):
+        self.main_window.show_view_student()

@@ -21,7 +21,10 @@ class AddStudentPage(QWidget):
 
         self.main_window = main_window
 
+        self.main_window.show_dashboard()
+
         layout = QVBoxLayout()
+        layout.setContentsMargins(100, 50,100, 50)
 
         title = QLabel("Add Student")
         layout.addWidget(title)
@@ -91,6 +94,10 @@ class AddStudentPage(QWidget):
         self.next_button = QPushButton("Next")
         self.next_button.clicked.connect(self.next_page)
         layout.addWidget(self.next_button)
+
+        self.backbtn = QPushButton("Back")
+        self.backbtn.clicked.connect(self.main_window.show_dashboard)
+        layout.addWidget(self.backbtn)
 
         self.setLayout(layout)
 

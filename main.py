@@ -3,6 +3,7 @@ import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 
 from database.database import create_database
+from database.database import get_all_students,get_student
 from authentication.login import LoginPage
 from authentication.register import RegisterPage
 
@@ -108,6 +109,7 @@ class MainWindow(QMainWindow):
         self.pages.setCurrentWidget(
             self.student_detail_page
         )
+
 
 
 

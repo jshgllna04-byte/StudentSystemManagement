@@ -93,9 +93,7 @@ class UpdateStudentPage(QWidget):
         layout.addWidget(self.save_button)
 
         self.back_button = QPushButton("Back")
-        self.back_button.clicked.connect(
-            self.main_window.show_dashboard
-        )
+        self.back_button.clicked.connect(self.main_window.show_view_student)
         layout.addWidget(self.back_button)
 
         self.setLayout(layout)

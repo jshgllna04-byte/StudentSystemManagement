@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import (
     QMessageBox
 )
 
-from database.database import get_all_students
+from database.database import get_all_students, get_student as db_get_student
 
 
 class ViewStudentPage(QWidget):
@@ -44,9 +44,7 @@ class ViewStudentPage(QWidget):
         layout.addLayout(buttons)
 
         self.back_button = QPushButton("Back")
-        self.back_button.clicked.connect(
-            self.main_window.show_dashboard
-        )
+        self.back_button.clicked.connect(self.main_window.show_dashboard)
         layout.addWidget(self.back_button)
 
         self.setLayout(layout)
@@ -56,17 +54,19 @@ class ViewStudentPage(QWidget):
 
         self.student_list.clear()
 
+
+
         students = get_all_students()
 
         for student in students:
 
             text = (
                 str(student[0])
-                + " - "
+                + " | "
                 + student[1]
-                + " - "
+                + " | "
                 + student[6]
-                + " - "
+                + " | "
                 + student[7]
             )
 
@@ -82,7 +82,7 @@ class ViewStudentPage(QWidget):
 
         text = item.text()
 
-        student_id = text.split(" - ")[0]
+        student_id = text.split(" | ")[0]
 
         return int(student_id)
 
@@ -101,7 +101,11 @@ class ViewStudentPage(QWidget):
 
             return
 
-        student = self.main_window.get_student(student_id)
+        student = db_get_student(student_id)
+
+        if student is None:
+            QMessageBox.warning(self,"Error","Student not found.")
+            return
 
         self.main_window.student_detail_page.load_student(student)
 

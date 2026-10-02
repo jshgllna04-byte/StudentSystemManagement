@@ -9,7 +9,6 @@ from PyQt6.QtWidgets import (
 )
 from style.style import STYLE
 from database.database import register_user
-#exammel : allen kalbo
 
 class RegisterPage(QWidget):
 
