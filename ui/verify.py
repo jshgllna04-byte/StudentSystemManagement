@@ -1,7 +1,7 @@
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
-    QHBoxLayout,
     QLabel,
     QPushButton,
     QMessageBox
@@ -20,15 +20,26 @@ class VerifyPage(QWidget):
         self.data = {}
 
         self.layout = QVBoxLayout()
+        self.layout.setContentsMargins(50,30,50,30)
+        self.layout.setSpacing(10)
+
 
         title = QLabel("Verify Student Information")
+        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        title.setStyleSheet("""font-family: Times New Roman;font-size: 35px;font-weight: bold;""")
         self.layout.addWidget(title)
+
 
         self.info = QLabel()
         self.layout.addWidget(self.info)
 
-        self.subjects_layout = QVBoxLayout()
-        self.layout.addLayout(self.subjects_layout)
+        # self.subjects_layout = QVBoxLayout()
+        # self.subjects_layout.setSpacing(2)
+        # self.layout.addLayout(self.subjects_layout)
+
+        self.subjects = QLabel()
+        self.subjects.setStyleSheet("""font-family: Times New Roman; font-size: 20px; font-weight: normal;""")
+        self.layout.addWidget(self.subjects)
 
         self.submit_button = QPushButton("Submit")
         self.submit_button.clicked.connect(self.submit_student)
@@ -46,61 +57,25 @@ class VerifyPage(QWidget):
         self.data = data
 
         text = (
-            "Full Name: " + data["fullname"] + "\n"
-            "Age: " + str(data["age"]) + "\n"
-            "Address: " + data["address"] + "\n"
-            "Contact: " + data["contact"] + "\n"
-            "Email: " + data["email"] + "\n"
-            "Course: " + data["course"] + "\n"
-            "Year Level: " + data["year_level"]
+            "Full Name: \t" + data["fullname"] + "\n\n"
+            "Age: \t" + str(data["age"]) + "\n\n"
+            "Address: \t" + data["address"] + "\n\n"
+            "Contact: \t" + data["contact"] + "\n\n"
+            "Email: \t" + data["email"] + "\n\n"
+            "Course: \t" + data["course"] + "\n\n"
+            "Year Level: \t" + data["year_level"]
         )
+        self.info.setStyleSheet("""font-family: Times New Roman;font-size: 20px;font-weight: normal;""")
 
         self.info.setText(text)
 
-        self.show_subjects()
+        subject_text = "Selected Subjects:\n"
+        for subject in data["subjects"]:
+            subject_text += subject + "\n"
+
+        self.subjects.setText(subject_text)
 
 
-    def show_subjects(self):
-
-        while self.subjects_layout.count():
-
-            item = self.subjects_layout.takeAt(0)
-
-            if item.widget():
-
-                item.widget().deleteLater()
-
-        title = QLabel("Selected Subjects")
-        self.subjects_layout.addWidget(title)
-
-        subjects = self.data["subjects"]
-
-        for subject in subjects:
-
-            row = QHBoxLayout()
-
-            label = QLabel(subject)
-            row.addWidget(label)
-
-            delete_button = QPushButton("Delete")
-
-            delete_button.clicked.connect(
-                lambda checked=False, name=subject:
-                self.delete_subject(name)
-            )
-
-            row.addWidget(delete_button)
-
-            self.subjects_layout.addLayout(row)
-
-
-    def delete_subject(self, subject):
-
-        if subject in self.data["subjects"]:
-
-            self.data["subjects"].remove(subject)
-
-        self.show_subjects()
 
 
     def submit_student(self):

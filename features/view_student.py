@@ -1,3 +1,4 @@
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -23,6 +24,7 @@ class ViewStudentPage(QWidget):
 
         title = QLabel("Students")
         layout.addWidget(title)
+
 
         self.student_list = QListWidget()
         layout.addWidget(self.student_list)

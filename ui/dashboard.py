@@ -17,7 +17,14 @@ class DashboardPage(QWidget):
 
         layout = QVBoxLayout()
         layout.setContentsMargins(100,50,100,50)
-        layout.setSpacing(10)
+        layout.setSpacing(5)
+        subtitle = QLabel("Welcome to!")
+        subtitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        subtitle.setStyleSheet("font-size:20px;")
+        layout.addWidget(subtitle)
+
+        layout.addSpacing(10)
+
         title = QLabel("Student Management System")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         title.setStyleSheet("""font-family: Times New Roman;font-size: 35px;font-weight: bold;""")
@@ -42,6 +49,7 @@ class DashboardPage(QWidget):
             self.main_window.show_login
         )
         layout.addWidget(logout_button)
+        layout.addSpacing(200)
 
         self.setLayout(layout)
 

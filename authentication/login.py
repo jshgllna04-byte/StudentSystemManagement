@@ -21,7 +21,7 @@ class LoginPage(QWidget):
         self.setStyleSheet(STYLE)
 
         layout = QVBoxLayout()
-        layout.setContentsMargins(100,50,100,50)
+        layout.setContentsMargins(150,50,150,50)
 
         project_title = QLabel("Student Management System")
         project_title.setStyleSheet("""font-family: Times New Roman;font-size: 35px;font-weight:bold;""")
@@ -83,6 +83,7 @@ class LoginPage(QWidget):
         )
 
         layout.addWidget(register_button)
+        layout.addSpacing(150)
 
         self.setLayout(layout)
 

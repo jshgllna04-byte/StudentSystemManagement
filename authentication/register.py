@@ -20,7 +20,7 @@ class RegisterPage(QWidget):
         self.setStyleSheet(STYLE)
 
         layout = QVBoxLayout()
-        layout.setContentsMargins(100,50,100,50)
+        layout.setContentsMargins(150,50,150,50)
 
         title = QLabel("Register")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -58,6 +58,8 @@ class RegisterPage(QWidget):
             self.main_window.show_login
         )
         layout.addWidget(back_button)
+
+        layout.addSpacing(150)
 
         self.setLayout(layout)
 
