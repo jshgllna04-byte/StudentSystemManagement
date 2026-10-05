@@ -20,7 +20,7 @@ class DashboardPage(QWidget):
         layout.setSpacing(5)
         subtitle = QLabel("Welcome to!")
         subtitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        subtitle.setStyleSheet("font-size:20px;")
+        subtitle.setStyleSheet("font-size:20px")
         layout.addWidget(subtitle)
 
         layout.addSpacing(10)

@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QMessageBox
 )
-from style.style import STYLE
+
 from database.database import register_user
 
 class RegisterPage(QWidget):
@@ -17,7 +17,7 @@ class RegisterPage(QWidget):
         super().__init__()
 
         self.main_window = main_window
-        self.setStyleSheet(STYLE)
+        
 
         layout = QVBoxLayout()
         layout.setContentsMargins(150,50,150,50)

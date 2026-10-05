@@ -3,13 +3,12 @@ import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 
 from database.database import create_database
-from database.database import get_all_students,get_student
 from authentication.login import LoginPage
 from authentication.register import RegisterPage
 
 from ui.dashboard import DashboardPage
-from ui.verify import VerifyPage
-from ui.student_detail import StudentDetailPage
+from features.verify import VerifyPage
+from features.student_detail import StudentDetailPage
 
 from features.add_student import AddStudentPage
 from features.view_student import ViewStudentPage
